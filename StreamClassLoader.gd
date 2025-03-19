@@ -8,7 +8,7 @@ const StreamType = preload("./stream.gd")
 ## If [code]source[/code] is a [bool] or an [int], returns an infinite stream
 ## of the value of [code]source[/code].[br]
 ## If [code]source[/code] is a [String], return a Stream over its characters.[br]
-## If [code]source[/code] is an [Object], returns [code]source.as_stream[/code].[br]
+## If [code]source[/code] is an [Object], returns [code]source.as_stream()[/code].[br]
 ## If [code]source[/code] is an [Callable], returns a stream of successive calls to [code]source[/code].[br]
 ## If [code]source[/code] is an [Array], returns a Stream over its elements.[br][br]
 ##

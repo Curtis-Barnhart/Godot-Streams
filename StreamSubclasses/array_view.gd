@@ -20,20 +20,3 @@ func next():
     var val = _arr[_it]
     _it += 1
     return val
-
-
-static func _array_or_stream(arr_str) -> _CL.StreamType:
-    if is_instance_of(arr_str, _CL.Stream):
-        return arr_str
-    if typeof(arr_str) == TYPE_ARRAY:
-        return _CL.ArrayView(arr_str)
-    else:
-        assert(false, "tried to make stream out of non array/stream object.")
-    return null
-
-
-static func _arrays_or_streams(arrs_strs: Array) -> Array[_CL.StreamType]:
-    return arrs_strs.map(
-        func (a_s):
-            return _CL._ArrayView._array_or_stream(a_s)
-    ) as Array[_CL.StreamType]

@@ -22,22 +22,51 @@ func next():
 # Stream transformers #
 #######################
 
+
+## Creates a Drop stream from this one,
+## which skips the first [code]count[/code] elements of this stream.[br][br]
+##
+## [param count]: The number of elements to drop from this stream.[br]
+## [param return]: A Stream which does not include the first [code]count[/code]
+##      elements of this Stream.
 func drop(count: int) -> _CL.StreamType:
     return _CL.Drop(self, count)
 
 
+## Creates a Filter stream from this one,
+## which removes elements that do not satisfy [code]filter_func[/code].[br][br]
+##
+## [param filter_func]: A Callable that returns [code]true[/code] for elements to keep
+##      and [code]false[/code] for elements to discard.[br]
+## [param return]: A Stream containing only elements for which [code]filter_func[/code] returns [code]true[/code].
 func filter(filter_func: Callable) -> _CL.StreamType:
     return _CL.Filter(self, filter_func)
 
 
+## Creates a Map stream from this one,
+## which applies [code]map_func[/code] to each element of this stream.[br][br]
+##
+## [param map_func]: A Callable that transforms each element.[br]
+## [param return]: A Stream containing the results of applying [code]map_func[/code] to
+##      each element.
 func map(map_func: Callable) -> _CL.StreamType:
     return _CL.Map(self, map_func)
 
 
+## Creates a Take stream from this one,
+## which limits the number of elements to [code]count[/code].[br][br]
+##
+## [param count]: The maximum number of elements to yield.[br]
+## [param return]: A Stream containing only
+##      the first [code]count[/code] elements from this Stream.
 func take(count: int) -> _CL.StreamType:
     return _CL.Take(self, count)
 
 
+## Creates a Uniq stream from this one,
+## which removes consecutive duplicate elements.[br][br]
+##
+## [param return]: A Stream with consecutive duplicate elements removed.
 func uniq() -> _CL.StreamType:
     return _CL.Uniq(self)
 
@@ -45,25 +74,45 @@ func uniq() -> _CL.StreamType:
 # Stream accumulators #
 #######################
 
+## Returns [code]true[/code] if any element in the stream evaluates to [code]true[/code].[br][br]
+##
+## [param return]: [code]true[/code] if at least one element is truthy,
+##      [code]false[/code] otherwise.
 func any() -> bool:
     return _CL.any.call(self)
 
 
+## Returns [code]true[/code] if all elements in the stream evaluate to [code]true[/code].[br][br]
+##
+## [param return]: [code]true[/code] if all elements are truthy, [code]false[/code] otherwise.
 func all() -> bool:
     return _CL.all.call(self)
 
 
+## Converts this stream into an array containing all its elements.[br][br]
+##
+## [param return]: An array of elements from the stream.
 func as_array() -> Array:
     return _CL.as_array.call(self)
 
 
+## Converts this stream into a dictionary where each unique element
+## is a key with a value of [code]null[/code].[br][br]
+##
+## [param return]: A dictionary representing the unique elements of the stream.
 func as_set() -> Dictionary:
     return _CL.as_set.call(self)
 
 
+## Reduces the stream using [code]function[/code], accumulating the result
+## from left to right, starting with [code]initial[/code].[br][br]
+##
+## [param function]: A Callable that takes the accumulator and the next element
+##      and returns the new accumulator value.[br]
+## [param initial]: The starting value for the accumulation.[br]
+## [param return]: The final accumulated result after applying [code]function[/code] to all elements.
 func foldl(function: Callable, initial):
     return _CL.foldl.call(self, function, initial)
-
 
 ####################
 # custom iterators #

@@ -208,6 +208,23 @@ static func Take(source, count: int) -> StreamType:
     return preload("./StreamSubclasses/take.gd").new(source, count)
 
 
+## Static constructor for TakeWhile, which takes from the elements of the original
+## stream while predicate called on those elements is true.
+## As soon as the predicate tests false,
+## the stream ends.[br][br]
+##
+## [param source]: Any Stream or source of data that is coercible to a Stream.
+##      For a complete list of what data is coercible,
+##      see [code]static func Stream(source) -> StreamType[/code] in
+##      [code]Godot-Streams/StreamClassLoader.gd[/code].[br]
+## [param predicate]: A Callable mapping from elements of [code]source[/code] to
+##      [code]bool[/code], determining which elements to keep.[br]
+## [param return]: A stream consisting of [code]source[/code]'s elements
+##      up until [code]predicate[/code] tests false on one of them.
+static func TakeWhile(source, predicate: Callable) -> StreamType:
+    return preload("./StreamSubclasses/take_while.gd").new(source, predicate)
+
+
 ## Static constructor for Uniq, which removes consecutive duplicate elements
 ## from a stream.[br][br]
 ##

@@ -1,4 +1,4 @@
-## ArrayView provides a simple wrapper over an array.
+## Enumerate adds an index stream to another stream.
 extends "../stream.gd"
 
 # array to iterate

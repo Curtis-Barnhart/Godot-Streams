@@ -63,6 +63,19 @@ func take(count: int) -> _CL.StreamType:
     return _CL.Take(self, count)
 
 
+## Creates a TakeWhile stream from this one, which takes from the elements of
+## this stream while predicate called on those elements is true.
+## As soon as the predicate tests false,
+## the stream ends.[br][br]
+##
+## [param predicate]: A Callable mapping from elements of this stream to
+##      [code]bool[/code], determining which elements to keep.[br]
+## [param return]: A stream consisting of this stream's elements
+##      up until [code]predicate[/code] tests false on one of them.
+func take_while(predicate: Callable) -> _CL.StreamType:
+    return _CL.TakeWhile(self, predicate)
+
+
 ## Creates a Uniq stream from this one,
 ## which removes consecutive duplicate elements.[br][br]
 ##

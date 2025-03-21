@@ -12,6 +12,9 @@ const StreamType = preload("./stream.gd")
 ## If [code]source[/code] is an [Callable], returns a stream of successive calls to [code]source[/code].[br]
 ## If [code]source[/code] is an [Array], returns a Stream over its elements.[br][br]
 ##
+## If [code]source[/code] cannot be coerced to a Stream,
+## pushes an error into the console and return null.[br][br]
+##
 ## [param source]: The source of data to use for the stream.[br]
 ## [param return]: A Stream of that data.
 static func Stream(source) -> StreamType:

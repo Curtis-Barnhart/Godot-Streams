@@ -85,6 +85,7 @@ static func Stream(source) -> StreamType:
             )
             return null
 
+
 ## Static constructor for ArrayView, which is a stream wrapper
 ## on top of an array.
 ##
@@ -118,6 +119,19 @@ static func Concat(sources: Array) -> StreamType:
 ## [param return]: Stream that begins after [code]count[/code] elements have been skipped.
 static func Drop(source, count: int) -> StreamType:
     return preload("./StreamSubclasses/drop.gd").new(source, count)
+
+
+## Static constructor for Enumerate, which zips together a stream
+## with an indexing stream (the index's elements come first).[br][br]
+##
+## [param source]: Any Stream or source of data that is coercible to a Stream.
+##      For a complete list of what data is coercible,
+##      see [code]static func Stream(source) -> StreamType[/code] in
+##      [code]Godot-Streams/StreamClassLoader.gd[/code].[br]
+## [param return]: Stream that gives an index for each element of [code]source[/code],
+##      i.e. [0, source[0]], [1, source[1]], [2, source[2]], ...
+static func Enumerate(source) -> StreamType:
+    return preload("./StreamSubclasses/enumerate.gd").new(source)
 
 
 ## Static constructor for Filter, which removes elements from a stream

@@ -127,6 +127,14 @@ func as_set() -> Dictionary:
 func foldl(function: Callable, initial):
     return _CL.foldl.call(self, function, initial)
 
+
+## Returns the number of elements in this stream.[br][br]
+##
+## [param return]: The number of elements in [code]source[/code].
+func size() -> int:
+    return _CL.size(self)
+
+
 ####################
 # custom iterators #
 ####################

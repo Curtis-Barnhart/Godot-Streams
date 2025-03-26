@@ -330,3 +330,18 @@ static func foldl(source, function: Callable, initial):
     for x in stream:
         initial = function.call(initial, x)
     return initial
+
+
+## Returns the number of elements in a stream.[br][br]
+##
+## [param source]: Any Stream or source of data that is coercible to a Stream.
+##      For a complete list of what data is coercible,
+##      see [code]static func Stream(source) -> StreamType[/code] in
+##      [code]Godot-Streams/StreamClassLoader.gd[/code].[br]
+## [param return]: The number of elements in [code]source[/code].
+static func size(source) -> int:
+    var stream: StreamType = Stream(source)
+    var acc: int = 0
+    for _x in stream:
+        acc += 1
+    return acc

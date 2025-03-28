@@ -63,6 +63,13 @@ func take(count: int) -> _CL.StreamType:
     return _CL.Take(self, count)
 
 
+## Creates a Reverse stream from this one.[br][br]
+##
+## [param return]: A stream iterating over this one's elements in reverse order.
+func reverse() -> _CL.StreamType:
+    return _CL.Reverse(self)
+
+
 ## Creates a TakeWhile stream from this one, which takes from the elements of
 ## this stream while predicate called on those elements is true.
 ## As soon as the predicate tests false,

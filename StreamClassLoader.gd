@@ -196,6 +196,20 @@ static func Repeat(value) -> StreamType:
     return preload("./StreamSubclasses/repeat.gd").new(value)
 
 
+## Static constructor for Reverse, which reverses another stream.[br][br]
+##
+## [param source]: Any Stream or source of data that is coercible to a Stream.
+##      For a complete list of what data is coercible,
+##      see [code]static func Stream(source) -> StreamType[/code] in
+##      [code]Godot-Streams/StreamClassLoader.gd[/code].[br]
+## [param return]: A stream which iterates in the reverse order
+##      over the elements of [code]source[/code].
+static func Reverse(source) -> StreamType:
+    var rev: Array = Stream(source).as_array()
+    rev.reverse()
+    return preload("./StreamSubclasses/array_view.gd").new(rev)
+
+
 ## Static constructor for Take, which limits a stream to the first [code]count[/code] elements.[br][br]
 ##
 ## [param source]: Any Stream or source of data that is coercible to a Stream.

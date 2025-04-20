@@ -33,6 +33,16 @@ func drop(count: int) -> _CL.StreamType:
     return _CL.Drop(self, count)
 
 
+## Creates an Enumerate stream from this one,
+## which adds an index to every element from this stream
+## (e.g. [0, <element>], [1, <element>], ...)[br][br].
+##
+## [param return]: A Stream with an index attached to
+##      every element of this stream.
+func enumerate() -> _CL.StreamType:
+    return _CL.Enumerate(self)
+
+
 ## Creates a Filter stream from this one,
 ## which removes elements that do not satisfy [code]filter_func[/code].[br][br]
 ##
